@@ -29,14 +29,29 @@ async function run() {
     await client.connect();
 
 
+    const featuresCollection = client.db("groupStudy").collection("studyFeatures");
     const userCollection = client.db("groupStudy").collection("userCreated");
 
     // client server
+    app.get('/studyFeatures', async(req, res)=>{
+        const result = await featuresCollection.find().toArray();
+        res.send(result);
+    })
+
+
+
+    // userCollection server
+    app.get('/allAssignments',async (req, res)=> {
+        const result = await userCollection.find().toArray();
+        res.send(result)
+    })
+
+
     app.post('/createAssignments', async (req, res)=> {
         const addAssignment = req.body;
         console.log(addAssignment);
-        // const result = await userCollection.insertOne(addAssignment);
-        // res.send(result);
+        const result = await userCollection.insertOne(addAssignment);
+        res.send(result);
     })
 
 
