@@ -52,6 +52,28 @@ async function run() {
       // res.send(result);
     })
 
+    app.put('/allAssignmetsUpdate/:id', async(req, res)=>{
+      const id =  req.params.id;
+      const updateValue = req.body;
+      console.log(id, updateValue);
+      const filter = {_id: new ObjectId(id)};
+      const options = {upsert: true};
+      const updateAssignment = {
+        $set: {
+          title: updateValue.title,
+          marks: updateValue.marks, 
+          image: updateValue.image, 
+          dueDate: updateValue.dueDate, 
+          difficulty: updateValue.difficulty, 
+          description: updateValue.description,
+          userEmail: updateValue.userEmail
+        }
+      }
+      console.log(filter, options, updateAssignment);
+      const result = await userCollection.updateOne(filter,updateAssignment,options);
+      res.send(result)
+    })
+
 
     app.post('/createAssignments', async (req, res)=> {
         const addAssignment = req.body;
