@@ -30,56 +30,64 @@ async function run() {
 
 
     const featuresCollection = client.db("groupStudy").collection("studyFeatures");
-    const userCollection = client.db("groupStudy").collection("userCreated");
+    const userAssignmentCollection = client.db("groupStudy").collection("userCreated");
+    const submittedAssignCollection = client.db("groupStudy").collection("submitAssign");
 
     // home feature server
-    app.get('/studyFeatures', async(req, res)=>{
-        const result = await featuresCollection.find().toArray();
-        res.send(result);
+    app.get('/studyFeatures', async (req, res) => {
+      const result = await featuresCollection.find().toArray();
+      res.send(result);
     })
 
     // userCollection server
-    app.get('/allAssignments',async (req, res)=> {
-        const result = await userCollection.find().toArray();
-        res.send(result)
+    app.get('/allAssignments', async (req, res) => {
+      const result = await userAssignmentCollection.find().toArray();
+      res.send(result)
     })
 
-    app.get('/allAssignments/:id', async (req, res)=>{
+    // app.get('/allAssignmentsDetail/:id', async (req, res)=>{
+    //   const id = req.params.id;
+    //   console.log(id);
+    //   const query = {_id: new ObjectId(id)};
+    //   const result = await userCollection.findOne(query);
+    //   res.send(result);
+    // })
+
+
+    app.post('/createAssignments', async (req, res) => {
+      const addAssignment = req.body;
+      console.log(addAssignment);
+      const result = await userAssignmentCollection.insertOne(addAssignment);
+      res.send(result);
+    })
+
+    app.post('/submitAssignment', async(req, res)=>{
+      const submittedAssign = req.body;
+      console.log(submittedAssign);
+      const result = await submittedAssignCollection.insertOne(submittedAssign);
+      res.send(result);
+    })
+
+    app.put('/allAssignmetsUpdate/:id', async (req, res) => {
       const id = req.params.id;
-      console.log(id);
-      // const query = {_id: new ObjectId(id)};
-      // const result = await userCollection.findOne(query);
-      // res.send(result);
-    })
-
-    app.put('/allAssignmetsUpdate/:id', async(req, res)=>{
-      const id =  req.params.id;
       const updateValue = req.body;
       console.log(id, updateValue);
-      const filter = {_id: new ObjectId(id)};
-      const options = {upsert: true};
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
       const updateAssignment = {
         $set: {
           title: updateValue.title,
-          marks: updateValue.marks, 
-          image: updateValue.image, 
-          dueDate: updateValue.dueDate, 
-          difficulty: updateValue.difficulty, 
+          marks: updateValue.marks,
+          image: updateValue.image,
+          dueDate: updateValue.dueDate,
+          difficulty: updateValue.difficulty,
           description: updateValue.description,
           userEmail: updateValue.userEmail
         }
       }
       console.log(filter, options, updateAssignment);
-      const result = await userCollection.updateOne(filter,updateAssignment,options);
+      const result = await userAssignmentCollection.updateOne(filter, updateAssignment, options);
       res.send(result)
-    })
-
-
-    app.post('/createAssignments', async (req, res)=> {
-        const addAssignment = req.body;
-        console.log(addAssignment);
-        const result = await userCollection.insertOne(addAssignment);
-        res.send(result);
     })
 
 
@@ -96,10 +104,10 @@ run().catch(console.dir);
 
 
 
-app.get('/', (req, res)=>{
-    res.send('online group study server is running');
+app.get('/', (req, res) => {
+  res.send('online group study server is running');
 })
 
-app.listen(port, ()=>{
-    console.log(`server runnning on port: ${port}`);
+app.listen(port, () => {
+  console.log(`server runnning on port: ${port}`);
 })
