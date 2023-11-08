@@ -61,11 +61,41 @@ async function run() {
       res.send(result);
     })
 
+    app.get('/submitAssignment', async(req, res)=>{
+      const result = await submittedAssignCollection.find({status:'pending'}).toArray();
+      console.log(result);
+      res.send(result)
+    })
+
     app.post('/submitAssignment', async(req, res)=>{
       const submittedAssign = req.body;
       console.log(submittedAssign);
       const result = await submittedAssignCollection.insertOne(submittedAssign);
       res.send(result);
+    })
+
+    app.put('/submitAssignment/:id', async (req,res)=>{
+      const id = req.params.id;
+      const submitMarks = req.body;
+      console.log(id, submitMarks);
+
+      const filter = {_id : new ObjectId(id)};
+      const options = {upsert: true};
+      const publishMark = {
+        $set: {
+          pdf:submitMarks.pdf, 
+          note:submitMarks.note, 
+          getMarks: submitMarks.getMarks, 
+          feedback: submitMarks.feedback, 
+          examineeName: submitMarks.examineeName, 
+          totalMarks: submitMarks.totalMarks, 
+          submittedUserEmail: submitMarks.submittedUserEmail, 
+          title: submitMarks.title, 
+          status: submitMarks.status
+        }
+      }
+      const result = await submittedAssignCollection.updateOne(filter, publishMark, options);
+      res.send(result)
     })
 
     app.put('/allAssignmetsUpdate/:id', async (req, res) => {
