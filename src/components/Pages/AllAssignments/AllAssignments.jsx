@@ -7,7 +7,7 @@ const AllAssignments = () => {
     const usersAssignData = useLoaderData();
     const inputRef = useRef(null);
     const [selectValue, setSelectValue] = useState('');
-    console.log(selectValue);
+    
 
     const handleChange = () => {
         const inputLevelValue = inputRef.current.value;
@@ -15,7 +15,7 @@ const AllAssignments = () => {
     }
 
     const findLevelData = usersAssignData.filter(dbLevelValue => dbLevelValue.difficulty === selectValue);
-    console.log(findLevelData);
+    
 
     return (
         <div className="max-w-7xl mx-auto my-12">
