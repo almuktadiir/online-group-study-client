@@ -45,14 +45,18 @@ async function run() {
       res.send(result)
     })
 
-    // app.get('/allAssignmentsDetail/:id', async (req, res)=>{
-    //   const id = req.params.id;
-    //   console.log(id);
-    //   const query = {_id: new ObjectId(id)};
-    //   const result = await userCollection.findOne(query);
-    //   res.send(result);
-    // })
+    app.get('/myAssignment',async (req, res)=> {
+      const result = await submittedAssignCollection.find().toArray();
+      res.send(result);
+    })
 
+    app.delete('/myAssignment/:id',async (req, res)=> {
+      const id = req.params.id;
+      console.log(id);
+      const query = {_id: new ObjectId(id)};
+      const result = await submittedAssignCollection.deleteOne(query);
+      res.send(result);
+    })
 
     app.post('/createAssignments', async (req, res) => {
       const addAssignment = req.body;
@@ -120,6 +124,8 @@ async function run() {
       res.send(result)
     })
 
+    
+
 
 
     // Send a ping to confirm a successful connection
@@ -141,3 +147,14 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`server runnning on port: ${port}`);
 })
+
+
+
+
+  // app.get('/allAssignmentsDetail/:id', async (req, res)=>{
+    //   const id = req.params.id;
+    //   console.log(id);
+    //   const query = {_id: new ObjectId(id)};
+    //   const result = await userCollection.findOne(query);
+    //   res.send(result);
+    // })
