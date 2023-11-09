@@ -27,7 +27,7 @@ const MyAssignmentCard = ({ setCurrentUserData,currentUserData, currentUsers }) 
                     }
                   });
             }
-            console.log(data);
+            
             /// remaining user
             const remaining = currentUserData.filter(exist => exist._id !== id);
             setCurrentUserData(remaining);
