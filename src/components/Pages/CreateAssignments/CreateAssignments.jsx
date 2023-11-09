@@ -21,7 +21,7 @@ const CreateAssignments = () => {
         const description = form.get('description');
         const email = user?.email;
         const assignment = {email, title, marks, image, dueDate, difficulty, description};
-        console.log(assignment);
+        
 
 
         fetch('http://localhost:5000/createAssignments', {
