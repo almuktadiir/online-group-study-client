@@ -22,7 +22,7 @@ const SubmitMarks = () => {
         const submittedUserEmail = pendingData.submittedUserEmail;
         const title = pendingData.title;
         const markPublish = {pdf, note, getMarks, feedback, examineeName, totalMarks, submittedUserEmail, title, status: 'complete'};
-        console.log(markPublish);
+        
 
         fetch(`http://localhost:5000/submitAssignment/${_id}`, {
             method: 'PUT',
