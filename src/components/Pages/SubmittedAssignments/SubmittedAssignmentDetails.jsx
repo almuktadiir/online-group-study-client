@@ -17,8 +17,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const SubmittedAssignmentDetails = ({ sData }) => {
     const { _id, title, marks, examineeName, pdf } = sData;
-    console.log(pdf);
-    // const pdfUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
 
     return (
         <div className="card card-side bg-base-100 shadow-xl">
