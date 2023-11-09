@@ -21,7 +21,7 @@ const AllAssignmentDetails = () => {
         const submittedUserEmail = user?.email;
         const examineeName = user?.displayName;
         const pendingAssignment = {pdf, note, status, submittedUserEmail, title, marks, examineeName};
-        console.log(pendingAssignment);
+        
 
         fetch('http://localhost:5000/submitAssignment', {
             method: 'POST',
