@@ -12,7 +12,7 @@ const AllAssignmentUpdate = () => {
     const { id } = useParams();
     const findSingleData = updateData.find(singleData => singleData._id === id);
     const { _id, description, difficulty, email, image, marks, title } = findSingleData;
-    // console.log(user.email, email);
+    
 
 
     const handleUpdateAssignment = e => {
