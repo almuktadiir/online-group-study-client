@@ -24,7 +24,7 @@ const SubmitMarks = () => {
         const markPublish = {pdf, note, getMarks, feedback, examineeName, totalMarks, submittedUserEmail, title, status: 'complete'};
         
 
-        fetch(`http://localhost:5000/submitAssignment/${_id}`, {
+        fetch(`https://online-group-study-eta.vercel.app/submitAssignment/${_id}`, {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(markPublish)

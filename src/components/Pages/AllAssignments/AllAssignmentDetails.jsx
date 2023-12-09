@@ -23,7 +23,7 @@ const AllAssignmentDetails = () => {
         const pendingAssignment = {pdf, note, status, submittedUserEmail, title, marks, examineeName};
         
 
-        fetch('http://localhost:5000/submitAssignment', {
+        fetch('https://online-group-study-eta.vercel.app/submitAssignment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

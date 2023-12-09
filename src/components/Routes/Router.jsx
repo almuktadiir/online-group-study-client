@@ -25,38 +25,38 @@ import PrivateRoute from "./PrivateRoute";
         {
             path: '/',
             element: <Home></Home>,
-            loader: ()=> fetch('http://localhost:5000/studyFeatures')
+            loader: ()=> fetch('https://online-group-study-eta.vercel.app/studyFeatures')
         },
         {
             path: '/allAssignments',
             element: <AllAssignments></AllAssignments>,
-            loader: ()=> fetch('http://localhost:5000/allAssignments')
+            loader: ()=> fetch('https://online-group-study-eta.vercel.app/allAssignments')
         },
         {
             path: '/allAssignmentsDetail/:id',
             element: <PrivateRoute><AllAssignmentDetails></AllAssignmentDetails></PrivateRoute>,
-            // loader: ({params})=> fetch(`http://localhost:5000/allAssignments/${params._id}`)
-            loader: ()=> fetch(`http://localhost:5000/allAssignments`)
+            // loader: ({params})=> fetch(`https://online-group-study-eta.vercel.app/allAssignments/${params._id}`)
+            loader: ()=> fetch(`https://online-group-study-eta.vercel.app/allAssignments`)
         },
         {
             path: '/allAssignmentsUpdate/:id',
             element: <PrivateRoute><AllAssignmentUpdate></AllAssignmentUpdate></PrivateRoute>,
-            loader: ()=> fetch(`http://localhost:5000/allAssignments`)
+            loader: ()=> fetch(`https://online-group-study-eta.vercel.app/allAssignments`)
         },
         {
             path: '/myAssignments',
             element: <PrivateRoute><MyAssignments></MyAssignments></PrivateRoute>,
-            loader: ()=> fetch('http://localhost:5000/myAssignment')
+            loader: ()=> fetch('https://online-group-study-eta.vercel.app/myAssignment')
         },
         {
             path: '/submittedAssignments',
             element: <PrivateRoute><SubmittedAssignments></SubmittedAssignments></PrivateRoute>,
-            loader: ()=> fetch('http://localhost:5000/submitAssignment')
+            loader: ()=> fetch('https://online-group-study-eta.vercel.app/submitAssignment')
         },
         {
           path: '/submitAssignMarking/:id',
           element: <PrivateRoute><SubmitMarks></SubmitMarks></PrivateRoute>,
-          loader: ()=> fetch('http://localhost:5000/submitAssignment')
+          loader: ()=> fetch('https://online-group-study-eta.vercel.app/submitAssignment')
         },
         {
             path: '/createAssignments',

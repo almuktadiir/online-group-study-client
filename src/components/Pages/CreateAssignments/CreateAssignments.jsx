@@ -24,7 +24,7 @@ const CreateAssignments = () => {
         
 
 
-        fetch('http://localhost:5000/createAssignments', {
+        fetch('https://online-group-study-eta.vercel.app/createAssignments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

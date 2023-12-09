@@ -1,4 +1,6 @@
+# live site link: https://online-group-study-93638.web.app
 # React + Vite
+<!-- https://online-group-study-eta.vercel.app -->
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MyAssignmentCard = ({ setCurrentUserData,currentUserData, currentUsers }) => {
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/myAssignment/${id}`, {
+        fetch(`https://online-group-study-eta.vercel.app/myAssignment/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
