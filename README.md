@@ -1,4 +1,4 @@
-# live site link: https://online-group-study-93638.web.app
+# live site link: https://effulgent-biscuit-7ed6a6.netlify.app/
 # React + Vite
 <!-- https://online-group-study-eta.vercel.app -->
 
